@@ -1,23 +1,36 @@
 from unityparser import UnityDocument
-import os
+
 
 def run():
-    default_path = os.getenv("GITHUB_WORKSPACE")
     project_settings_file_path = 'ProjectSettings/ProjectSettings.asset'
     unity_document = UnityDocument.load_yaml(project_settings_file_path)
     projectsettings_monobehaviour_document = unity_document.entry
+
     try:
-        version = projectsettings_monobehaviour_document.AndroidBundleVersionCode
+        android_build_number = projectsettings_monobehaviour_document.AndroidBundleVersionCode
     except AttributeError:
-        print("Failed to find photonNetworkVersion in NetworkConfig.asset")
+        print("Failed to find AndroidBundleVersionCode in ProjectSettings.asset")
+        return
+    try:
+        ios_build_number = projectsettings_monobehaviour_document.buildNumber.iPhone
+    except AttributeError:
+        print("Failed to find buildNumber.iPhone in ProjectSettings.asset")
         return
 
-    old_networking_version = version
-    version += 1
-    print(str(old_networking_version) + " -> " + str(version))
-    projectsettings_monobehaviour_document.AndroidBundleVersionCode = version
+    old_android_build_number = android_build_number
+    old_ios_build_number = ios_build_number
+    android_build_number += 1
+    ios_build_number += 1
+
+    print("AndroidBundleVersionCode: " + str(old_android_build_number) + " -> " + str(android_build_number))
+    print("iOS Build Number: " + str(old_ios_build_number) + " -> " + str(ios_build_number))
+
+    projectsettings_monobehaviour_document.AndroidBundleVersionCode = android_build_number
+    projectsettings_monobehaviour_document.buildNumber.iPhone = ios_build_number
+
     # see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
-    print(f"::set-output name=new-build-number::{version}")
+    print(f"::set-output name=android-build-number::{android_build_number}")
+    print(f"::set-output name=ios-build-number::{ios_build_number}")
     unity_document.dump_yaml()
     return
 
