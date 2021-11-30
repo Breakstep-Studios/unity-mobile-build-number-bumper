@@ -24,6 +24,7 @@ runs:
       with:
         python-version: 3.8
     - name: "Bump Build Number"
+      shell: bash
       run: |
         python -m pip install --upgrade pip
         pip install -U unityparser
