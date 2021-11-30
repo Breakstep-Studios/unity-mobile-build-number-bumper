@@ -2,7 +2,7 @@ from unityparser import UnityDocument
 
 
 def run():
-    project_settings_file_path = './ProjectsSettings/ProjectsSettings.asset'
+    project_settings_file_path = '././ProjectsSettings/ProjectsSettings.asset'
     unity_document = UnityDocument.load_yaml(project_settings_file_path)
     projectsettings_monobehaviour_document = unity_document.entry
 
