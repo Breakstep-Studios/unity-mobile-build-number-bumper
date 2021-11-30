@@ -1,0 +1,17 @@
+name: 'Unity Mobile Build Number Bumper'
+author: Breakstep Studios
+description: 'Github action that bumps the AndroidBundleVersionCode & iOS Build Number by 1'
+branding:
+  icon: 'settings'
+  color: 'gray-dark'
+inputs:
+  GH_TOKEN:
+    description: 'GitHub access token with Repo scope'
+    required: true
+    default: ${{ github.token }}
+outputs:
+  SOMETHING:
+    description: "Test"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
