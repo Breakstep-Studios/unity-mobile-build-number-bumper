@@ -15,7 +15,7 @@ def run():
     old_networking_version = version
     version += 1
     print(str(old_networking_version) + " -> " + str(version))
-    projectsettings_monobehaviour_document.photonNetworkingVersion = version
+    projectsettings_monobehaviour_document.AndroidBundleVersionCode = version
     # see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
     print(f"::set-output name=new-build-number::{version}")
     unity_document.dump_yaml()
