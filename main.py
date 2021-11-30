@@ -1,7 +1,9 @@
 from unityparser import UnityDocument
-
+import os
 
 def run():
+    default_path = os.getenv("GITHUB_WORKSPACE")
+    print(default_path)
     project_settings_file_path = 'ProjectsSettings/ProjectsSettings.asset'
     unity_document = UnityDocument.load_yaml(project_settings_file_path)
     projectsettings_monobehaviour_document = unity_document.entry
