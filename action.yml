@@ -4,14 +4,11 @@ description: 'Github action that bumps the AndroidBundleVersionCode & iOS Build 
 branding:
   icon: 'settings'
   color: 'gray-dark'
-inputs:
-  repo:
-    description: "The path to the repository where the action will be used, e.g. 'alstr/my-repo' (automatically set)"
-    required: true
-    default: "${{ github.repository }}"
 outputs:
-  new-build-number:
-    description: "The new build number for Android and iOS"
+  android-build-number:
+    description: "The new build number for Android"
+  ios-build-number:
+    description: "The new build number for iOS"
 runs:
   using: 'docker'
   image: 'Dockerfile'
