@@ -12,7 +12,7 @@ def run():
         print("Failed to find AndroidBundleVersionCode in ProjectSettings.asset")
         return
     try:
-        ios_build_number = projectsettings_monobehaviour_document.buildNumber.iPhone
+        ios_build_number = projectsettings_monobehaviour_document.buildNumber["iPhone"]
     except AttributeError:
         print("Failed to find buildNumber.iPhone in ProjectSettings.asset")
         return
