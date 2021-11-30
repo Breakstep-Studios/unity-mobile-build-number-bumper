@@ -26,7 +26,7 @@ def run():
     print("iOS Build Number: " + str(old_ios_build_number) + " -> " + str(ios_build_number))
 
     projectsettings_monobehaviour_document.AndroidBundleVersionCode = android_build_number
-    projectsettings_monobehaviour_document.buildNumber.iPhone = ios_build_number
+    projectsettings_monobehaviour_document.buildNumber["iPhone"] = ios_build_number
 
     # see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
     print(f"::set-output name=android-build-number::{android_build_number}")
