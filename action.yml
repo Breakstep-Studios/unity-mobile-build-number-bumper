@@ -13,5 +13,19 @@ outputs:
   new-build-number:
     description: "The new build number for Android and iOS"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "composite"
+  steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: "Setup Python v3.8"
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: "Bump Build Number"
+      run: |
+        python -m pip install --upgrade pip
+        pip install -U unityparser
+        python ${{ github.action_path }}/main.py
+      id: prepare-files
