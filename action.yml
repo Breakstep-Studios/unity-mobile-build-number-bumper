@@ -7,8 +7,10 @@ branding:
 outputs:
   android-build-number:
     description: "The new build number for Android"
+    value: ${{ steps.bump-build-number.outputs.android-build-number }}
   ios-build-number:
     description: "The new build number for iOS"
+    value: ${{ steps.bump-build-number.outputs.ios-build-number }}
 runs:
   using: "composite"
   steps:
@@ -17,9 +19,9 @@ runs:
       with:
         python-version: 3.8
     - name: "Bump Build Number"
+      id: bump-build-number
       shell: bash
       run: |
         python -m pip install --upgrade pip
         pip install -U unityparser
         python ${{ github.action_path }}/main.py
-      id: prepare-files
