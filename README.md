@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
       - name: "Unity Mobile Build Bumper"
         id: unity-mobile-build-bumper
-        uses: Breakstep-Studios/unity-mobile-build-number-bumper@composite
+        uses: Breakstep-Studios/unity-mobile-build-number-bumper@v1
       - name: "Add, Commit And Push Prepared Files"
         run: |
           git config --global user.email "releasebot@users.noreply.github.com"
