@@ -5,12 +5,18 @@ branding:
   icon: 'settings'
   color: 'gray-dark'
 outputs:
-  android-build-number:
-    description: "The new build number for Android"
-    value: ${{ steps.bump-build-number.outputs.android-build-number }}
-  ios-build-number:
-    description: "The new build number for iOS"
-    value: ${{ steps.bump-build-number.outputs.ios-build-number }}
+  android-build-number-before:
+    description: "The build number for Android before the bump"
+    value: ${{ steps.bump-build-number.outputs.android-build-number-before }}
+  android-build-number-after:
+    description: "The build number for Android after the bump"
+    value: ${{ steps.bump-build-number.outputs.android-build-number-after }}
+  ios-build-number-before:
+    description: "The build number for iOS before the bump"
+    value: ${{ steps.bump-build-number.outputs.ios-build-number-before }}
+  ios-build-number-after:
+    description: "The build number for iOS before the bump"
+    value: ${{ steps.bump-build-number.outputs.ios-build-number-after }}
 runs:
   using: "composite"
   steps:

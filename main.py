@@ -29,8 +29,10 @@ def run():
     projectsettings_monobehaviour_document.buildNumber["iPhone"] = ios_build_number
 
     # see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-output-parameter
-    print(f"::set-output name=android-build-number::{android_build_number}")
-    print(f"::set-output name=ios-build-number::{ios_build_number}")
+    print(f"::set-output name=android-build-number-before::{old_android_build_number}")
+    print(f"::set-output name=android-build-number-after::{android_build_number}")
+    print(f"::set-output name=ios-build-number-before::{old_ios_build_number}")
+    print(f"::set-output name=ios-build-number-after::{ios_build_number}")
     unity_document.dump_yaml()
     return
 
