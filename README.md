@@ -10,20 +10,20 @@ Github action that bumps the **AndroidBundleVersionCode** &amp; **iOS Build Numb
 ## Example Usage
 
 ```yaml
-name: Bump Number
+name: Unity Build Number Bumper
 
 on: workflow_dispatch
 
 jobs:
-  bump-number-job:
+  unity-bump-number-job:
     runs-on: ubuntu-latest
-    name: A job to test unity-mobile-build-number-bumper
+    name: "A job to test unity-mobile-build-number-bumper"
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Unity Mobile Build Bumper
+      - name: "Unity Mobile Build Bumper"
         id: unity-mobile-build-bumper
         uses: Breakstep-Studios/unity-mobile-build-number-bumper@composite
       - name: "Add, Commit And Push Prepared Files"
@@ -33,7 +33,7 @@ jobs:
           git add -A
           git commit -m "Updated bundle versions"
           git push
-      - name: "Output numbers"
+      - name: "Output Numbers"
         run: |
           echo iOS build number: ${{ steps.unity-mobile-build-bumper.outputs.ios-build-number-before }} -> ${{ steps.unity-mobile-build-bumper.outputs.ios-build-number-after }}
           echo Android build number: ${{ steps.unity-mobile-build-bumper.outputs.android-build-number-before }} -> ${{ steps.unity-mobile-build-bumper.outputs.android-build-number-after }}
