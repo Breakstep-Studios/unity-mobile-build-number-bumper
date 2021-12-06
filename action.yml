@@ -15,7 +15,7 @@ outputs:
     description: "The build number for iOS before the bump"
     value: ${{ steps.bump-build-number.outputs.ios-build-number-before }}
   ios-build-number-after:
-    description: "The build number for iOS before the bump"
+    description: "The build number for iOS after the bump"
     value: ${{ steps.bump-build-number.outputs.ios-build-number-after }}
 runs:
   using: "composite"
